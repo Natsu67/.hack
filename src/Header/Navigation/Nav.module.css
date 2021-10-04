@@ -1,0 +1,24 @@
+.Nav {
+    width: 60%;
+    max-width: 400px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+}
+.Nav li {
+    text-align: center;
+    transition: all 0.2s ease;
+}
+.Nav li:hover {
+    opacity: .6;
+}
+.Nav a {
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    font-weight: 600;
+    font-size: 20px;
+}
