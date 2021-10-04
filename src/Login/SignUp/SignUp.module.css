@@ -1,9 +1,76 @@
 .SignUp {
-    position: fixed;
-    top: 30vh;
-    left: 10%;
-    width: 80%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 100;
+    background-color: #FFFFFF;
+    opacity: .9;
+    min-width: 240px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+.filedDiv {
+    display: flex;
+    flex-flow: row;
+    align-items:baseline;
+    margin: 0px 30px;
+}
+.Icon {
+    color: #929292;
+}
+.SignUp form {
+    color: #929292;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+.SignUp h3{
+  text-align: center;
+}
+.SignUp input {
+    border: none;
+    margin: 15px 0px;
+    border-bottom: 1px solid #C4C4C4;
+    padding: 7px 9px;
     overflow: hidden;
-    background-color: whitesmoke;
+    background: transparent;
+    font-weight: 600;
+    font-size: 14px;
+}
+.SignUp input:focus{
+    outline: none;
+}
+.button {
+    width: 80%;
+    margin-top: 20px;
+    border: none;
+    background: #1E81B0;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 1.15rem;
+    transition: 0.1s;
+}
+
+.button:hover,
+.button:active {
+    background: #249cd4;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.link {
+    margin-bottom: 10px;
+}
+
+.link:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }

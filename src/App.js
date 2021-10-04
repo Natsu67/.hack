@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import css from './App.module.css';
+// import css from './App.module.css';
 import Header from './Header/Header';
 import Home from './Home/Home';
 import Login from './Login/Login';
 import AuthContext from './store/auth-context';
 
 function App() {
-	const ctx = useContext(AuthContext);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [logInNow, setLogInNow] = useState(false);
 

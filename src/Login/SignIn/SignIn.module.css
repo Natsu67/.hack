@@ -1,57 +1,73 @@
 .SignIn {
-    position: fixed;
-    top: 30vh;
-    left: 10%;
-    width: 80%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 100;
-    overflow: hidden;
-    background-color: whitesmoke;
-}
-.control {
-    margin: 1rem 0;
+    background-color: #FFFFFF;
+    opacity: .9;
+    min-width: 240px;
     display: flex;
-    align-items: stretch;
-    flex-direction: column;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
 }
-
-.control label,
-.control input {
-    display: block;
+.filedDiv {
+    display: flex;
+    flex-flow: row;
+    align-items:baseline;
+    margin: 0px 30px;
 }
-
-.control label {
-    font-weight: bold;
-    flex: 1;
-    color: #464646;
-    margin-bottom: 0.5rem;
+.Icon {
+    color: #929292;
 }
-
-.control input {
-    flex: 3;
-    font: inherit;
-    padding: 0.35rem 0.35rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+.SignIn form {
+    color: #929292;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
 }
-
-.control input:focus {
+.SignIn input {
+    border: none;
+    margin: 15px 0px;
+    border-bottom: 1px solid #C4C4C4;
+    padding: 7px 9px;
+    overflow: hidden;
+    background: transparent;
+    font-weight: 600;
+    font-size: 14px;
+}
+.SignIn input:focus{
     outline: none;
-    border-color: #4f005f;
-    background: #f6dbfc;
+}
+.button {
+    width: 80%;
+    margin-top: 20px;
+    border: none;
+    background: #1E81B0;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 1.15rem;
+    transition: 0.1s;
 }
 
-.control.invalid input {
-    border-color: red;
-    background: #fbdada;
+.button:hover,
+.button:active {
+    background: #249cd4;
 }
 
-.actions {
-    text-align: center;
+.button:focus {
+    outline: none;
 }
 
-@media (min-width: 768px) {
-    .control {
-        align-items: center;
-        flex-direction: row;
-    }
+.link {
+    margin-bottom: 10px;
+}
+
+.link:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }

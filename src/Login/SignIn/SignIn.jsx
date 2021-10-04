@@ -2,6 +2,8 @@ import React, { useState, useEffect,  useReducer, useContext} from 'react';
 import css from "./SignIn.module.css";
 import AuthContext from '../../store/auth-context';
 import Box from '../../UI/Box';
+import * as Icon from 'react-bootstrap-icons';
+import Logo from '../../Header/Logo.png'
 
 const emailReducer = (state, action) => {
 	if (action.type === "USER_INPUT") {
@@ -68,40 +70,32 @@ const SignIn = (props) => {
     return (
         <Box className={css.SignIn}>
             <form onSubmit={submitHandler}>
-                <div
-                className={`${css.control} ${
-                    emailState.isValid === false ? css.invalid : ''
-                }`}
-                >
-                <label htmlFor="email">E-Mail</label>
-                <input
-                    type="email"
-                    id="email"
-                    value={emailState.value}
-                    onChange={emailChangeHandler}
-                    onBlur={validateEmailHandler}
-                />
+                <img src={Logo} alt="Logo"/>
+                <div className={css.filedDiv}>
+                    <Icon.Envelope className={css.Icon}/>
+                    <input
+                        type="email"
+                        id="email"
+                        value={emailState.value}
+                        onChange={emailChangeHandler}
+                        onBlur={validateEmailHandler}
+                        placeholder="Email"
+                    />
                 </div>
-                <div
-                className={`${css.control} ${
-                    passwordState.isValid === false ? css.invalid : ''
-                }`}
-                >
-                <label htmlFor="password">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    value={passwordState.value}
-                    onChange={passwordChangeHandler}
-                    onBlur={validatePasswordHandler}
-                />
+                <div className={css.filedDiv}>
+                    <Icon.ShieldLock className={css.Icon}/>
+                    <input 
+                        type="password"
+                        id="password"
+                        value={passwordState.value}
+                        onChange={passwordChangeHandler}
+                        onBlur={validatePasswordHandler}
+                        placeholder="Password"
+                     />
                 </div>
-                <div className={css.actions}>
-                <button onClick={props.onReg}>Reg</button>
-                <button type="submit" className={css.btn} disabled={!formIsValid}>
-                    Login
-                </button>
-                </div>
+                <span className={css.link}>Forgot password?</span>
+                <button type="submit" className={css.button} disabled={!formIsValid}>Sign In</button>
+                <span className={css.link} onClick={props.onReg}>Create an account</span>
             </form>
         </Box>
     );
