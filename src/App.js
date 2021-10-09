@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-// import css from './App.module.css';
+import css from './App.module.css';
+import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import Home from './Home/Home';
 import Login from './Login/Login';
+import PostList from './PostList/PostList';
+import Search from './Search/Search';
 import AuthContext from './store/auth-context';
 
 function App() {
@@ -43,10 +46,13 @@ function App() {
 			onLogInNow: setLogInNow
 		}}>
 			<Header />
-			<main>
+			<main className={css.Main}>
 				{logInNow && <Login onLogin={loginHandler}/>}
 				{isLoggedIn && <Home />}
+				<Search/>
+				<PostList/>
 			</main>
+			<Footer/>
 		</AuthContext.Provider>
 	);
 }

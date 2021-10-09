@@ -64,7 +64,9 @@ const SignIn = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        ctx.onLogIn(emailState.value, passwordState.value);
+        if (formIsValid) {
+            ctx.onLogIn(emailState.value, passwordState.value);
+        }
     };
 
     return (
@@ -94,7 +96,7 @@ const SignIn = (props) => {
                      />
                 </div>
                 <span className={css.link}>Forgot password?</span>
-                <button type="submit" className={css.button} disabled={!formIsValid}>Sign In</button>
+                <button type="submit" className={css.button} >Sign In</button>
                 <span className={css.link} onClick={props.onReg}>Create an account</span>
             </form>
         </Box>
