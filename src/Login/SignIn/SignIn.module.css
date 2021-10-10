@@ -63,6 +63,10 @@
     outline: none;
 }
 
+.button:disabled {
+    background: #797979;
+}
+
 .link {
     margin-bottom: 10px;
 }

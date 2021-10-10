@@ -21,13 +21,13 @@ function App() {
 		}
 	}, []);
   
-	const loginHandler = (email, password) => {
-		// We should of course check email and password
-		// But it's just a dummy/ demo anyways
-		localStorage.setItem('isLoggedIn', '1');
-		setIsLoggedIn(true);
-		setLogInNow(false);
-	};
+	// const loginHandler = (email, password) => {
+	// 	// We should of course check email and password
+	// 	// But it's just a dummy/ demo anyways
+	// 	localStorage.setItem('isLoggedIn', '1');
+	// 	setIsLoggedIn(true);
+	// 	setLogInNow(false);
+	// };
   
 	const logoutHandler = () => {
 		localStorage.removeItem('isLoggedIn');
@@ -42,12 +42,12 @@ function App() {
 			logInNow: logInNow,
 			isLoggedIn: isLoggedIn,
 			onLogout: logoutHandler,
-			onLogIn: loginHandler,
+			setLogIn: setIsLoggedIn,
 			onLogInNow: setLogInNow
 		}}>
 			<Header />
 			<main className={css.Main}>
-				{logInNow && <Login onLogin={loginHandler}/>}
+				{logInNow && <Login />}
 				{isLoggedIn && <Home />}
 				<Search/>
 				<PostList/>
