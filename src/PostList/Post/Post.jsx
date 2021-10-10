@@ -20,10 +20,10 @@ const Post = (props) => {
                     <span className={css.PostTitle}>{props.title}</span>
                     <div className={css.CategoriesAndUser}>
                         {Array.from(props.categories).map((Category) => {
-                            return <span key={Category.category_id}>#{Category.category_id}</span>;
+                            return <span key={Category.category_id}>#{Category.category_name}</span>;
                         })}
                         <Icon.Person className={css.PersonIcon}/>
-                        <span>{props.user_id}</span>
+                        <span>{props.user_login}</span>
                     </div>
                     <div className={css.PostContent}>
                         <span className={css.PostContentText}>{contentText}</span>

@@ -9,7 +9,7 @@ const Login = (props) => {
 
     const [regOrLog, setRegOrLog] = useState(false)
 
-    const createUserHandler = async (user) => {
+    const signUpHandler = async (user) => {
         const response = await fetch('http://hack-ashp.herokuapp.com/api/auth/register', {
             method: "POST",
             body: JSON.stringify(user),
@@ -27,7 +27,7 @@ const Login = (props) => {
         <div>
             <div className={classes.back} onClick={() => ctx.onLogInNow(false)}></div>
             {!regOrLog && <SignIn onReg={() => setRegOrLog(true)}/>}
-            {regOrLog && <SignUp onLog={() => setRegOrLog(false)} onCreateUser={createUserHandler}/>}
+            {regOrLog && <SignUp onLog={() => setRegOrLog(false)} onCreateUser={signUpHandler}/>}
         </div>
     );
 };

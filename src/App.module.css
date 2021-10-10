@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 .Main {
+  width: 100%;
   display: flex;
   flex-flow: column;
   justify-content: center;

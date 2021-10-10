@@ -1,0 +1,24 @@
+.SortDiv {
+    width: 60%;
+    min-width: 300px;
+    margin-top: 30px;
+    font-size: 18px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+.SortDiv span {
+    margin-left: 10px;
+}
+.SortList {
+    margin: 0px;
+    margin-left: 10px;
+    padding: 0px;
+}
+.SortList li {
+    display:inline;
+    margin-right: 10px;
+}
+.Active {
+    border-bottom: solid #1E81B0 2px;
+}
