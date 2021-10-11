@@ -25,7 +25,7 @@ const SignUp = (props) => {
       password_confirmation: password_confirmationRef.current.value,
     };
 
-    props.signUpHandler(user);
+    props.onCreateUser(user);
   };
 
   return (

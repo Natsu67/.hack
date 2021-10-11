@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import css from './App.module.css';
 import Footer from './Footer/Footer';
@@ -10,50 +10,39 @@ import Search from './Search/Search';
 import AuthContext from './store/auth-context';
 
 function App() {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const ctxAuth = useContext(AuthContext);
+
 	const [logInNow, setLogInNow] = useState(false);
 
 	useEffect(() => {
 		const storedLogInfo = localStorage.getItem('isLoggedIn');
 
-		if (storedLogInfo === '1') {
-			setIsLoggedIn(true);
-		}
+		// if (storedLogInfo === '1') {
+		// 	setIsLoggedIn(true);
+		// }
 	}, []);
-  
-	// const loginHandler = (email, password) => {
-	// 	// We should of course check email and password
-	// 	// But it's just a dummy/ demo anyways
-	// 	localStorage.setItem('isLoggedIn', '1');
-	// 	setIsLoggedIn(true);
-	// 	setLogInNow(false);
-	// };
-  
-	const logoutHandler = () => {
-		localStorage.removeItem('isLoggedIn');
-		setIsLoggedIn(false);
-	};
- 
 
 
 
 	return (
-		<AuthContext.Provider value = {{ 
-			logInNow: logInNow,
-			isLoggedIn: isLoggedIn,
-			onLogout: logoutHandler,
-			setLogIn: setIsLoggedIn,
-			onLogInNow: setLogInNow
-		}}>
-			<Header />
+		// <AuthContext.Provider value = {{ 
+		// 	logInNow: logInNow,
+		// 	isLoggedIn: isLoggedIn,
+		// 	logout: logoutHandler,
+		// 	setLogIn: setIsLoggedIn,
+		// 	onLogInNow: setLogInNow
+		// }}>
+		<React.Fragment>
+			<Header onStartLogIn={()=>setLogInNow(true)}/>
 			<main className={css.Main}>
-				{logInNow && <Login />}
-				{isLoggedIn && <Home />}
+				{logInNow && <Login onEndLogIn={()=>setLogInNow(false)}/>}
+				{ctxAuth.isLoggedIn && <Home />}
 				<Search/>
 				<PostList/>
 			</main>
 			<Footer/>
-		</AuthContext.Provider>
+		</React.Fragment>
+		// </AuthContext.Provider>
 	);
 }
 

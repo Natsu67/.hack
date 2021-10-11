@@ -12,8 +12,9 @@ const Header = (props) => {
         <Box className = {css.Header}>
             <img src={Logo} className={css.logoImage} alt="Logo"/>
             <Nav/>
-            {!ctx.isLoggedIn && <button className={css.button} onClick={() => ctx.onLogInNow(true)}>Log in</button>}
-            {ctx.isLoggedIn && <button className={css.button} onClick={ctx.onLogout}>Log out</button>}
+            {!ctx.isLoggedIn && <button className={css.button} onClick={props.onStartLogIn}>Log in</button>}
+            {ctx.isLoggedIn && <button className={css.button} onClick={ctx.logout}>Log out</button>}
+            {ctx.isLoggedIn && <button className={css.button} onClick={ctx.logout}>Log out</button>}
         </Box>
     );
 }

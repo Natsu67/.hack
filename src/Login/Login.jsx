@@ -20,13 +20,14 @@ const Login = (props) => {
         });
         const data = await response.json();
         console.log(data);
-        ctx.onLogInNow(false);
+        props.onEndLogIn();
     }
 
+    
     return (
         <div>
-            <div className={classes.back} onClick={() => ctx.onLogInNow(false)}></div>
-            {!regOrLog && <SignIn onReg={() => setRegOrLog(true)}/>}
+            <div className={classes.back} onClick={props.onEndLogIn}></div>
+            {!regOrLog && <SignIn onSuccessLogIn={props.onEndLogIn} onReg={() => setRegOrLog(true)}/>}
             {regOrLog && <SignUp onLog={() => setRegOrLog(false)} onCreateUser={signUpHandler}/>}
         </div>
     );

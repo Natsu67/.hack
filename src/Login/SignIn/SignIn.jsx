@@ -88,9 +88,8 @@ const SignIn = (props) => {
 
             if (response.ok) {
                 console.log(data);
-                localStorage.setItem('isLoggedIn', '1');
-                ctx.setLogIn(true);
-                ctx.onLogInNow(false);
+                ctx.login(data.token);
+                props.onSuccessLogIn();
             } else {
                 throw new Error(data.message);
             }
