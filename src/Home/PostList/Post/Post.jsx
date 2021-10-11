@@ -1,5 +1,5 @@
 import React from "react";
-import Box from "../../UI/Box";
+import Box from "../../../UI/Box";
 import * as Icon from "react-bootstrap-icons";
 import css from "./Post.module.css";
 

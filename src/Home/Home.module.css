@@ -1,7 +1,8 @@
-.Home {
-  width: 90%;
-  max-width: 40rem;
-  padding: 3rem;
-  margin: 2rem auto;
-  text-align: center;
-}
+.Main {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 auto;
+  }

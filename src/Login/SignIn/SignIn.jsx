@@ -3,7 +3,7 @@ import css from "./SignIn.module.css";
 import AuthContext from "../../store/auth-context";
 import Box from "../../UI/Box";
 import * as Icon from "react-bootstrap-icons";
-import Logo from "../../Header/Logo.png";
+import Logo from "../../store/images/Logo.png";
 import Loader from "react-loader-spinner";
 
 const loginReducer = (state, action) => {
@@ -27,7 +27,7 @@ const passwordReducer = (state, action) => {
 };
 
 const SignIn = (props) => {
-  const ctx = useContext(AuthContext);
+  const authCtx = useContext(AuthContext);
 
   const [formIsValid, setFormIsValid] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -88,8 +88,8 @@ const SignIn = (props) => {
 
             if (response.ok) {
                 console.log(data);
-                ctx.login(data.token);
-                props.onSuccessLogIn();
+                authCtx.login(data);
+                authCtx.switchLogInNow();
             } else {
                 throw new Error(data.message);
             }

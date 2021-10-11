@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import Post from "./Post/Post";
 import Loader from "react-loader-spinner";
 
 import css from "./PostList.module.css";
 import Sort from "./Sort/Sort";
+import AuthContext from "../../store/auth-context";
 
 const PostList = (props) => {
   const [postsData, setPostsData] = useState([]);
@@ -35,6 +36,8 @@ const PostList = (props) => {
     }
   };
 
+  const authCtx = useContext(AuthContext);
+
   const fetchPostsHandler = useCallback(async () => {
     setIsLoading(true);
     setError(null);
@@ -43,10 +46,16 @@ const PostList = (props) => {
         `http://hack-ashp.herokuapp.com/api/posts?sort=${sortType}&dir=${sortDir}`,
         {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
+          headers: authCtx.isLoggedIn
+            ? {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: "Bearer " + authCtx.token,
+              }
+            : {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
         }
       );
       if (!response.ok) {
@@ -62,7 +71,7 @@ const PostList = (props) => {
       setError(error.message);
     }
     setIsLoading(false);
-  }, [sortType, sortDir]);
+  }, [sortType, sortDir, authCtx.isLoggedIn]);
 
   useEffect(() => {
     fetchPostsHandler();
@@ -70,7 +79,7 @@ const PostList = (props) => {
 
   return (
     <div className={css.PostsAndSort}>
-      <Sort sortType={sortType} sortDir={sortDir} onSort={onSortHandler}/>
+      <Sort sortType={sortType} sortDir={sortDir} onSort={onSortHandler} />
       <div className={css.PostList}>
         {!isLoading && error && <p>{error}</p>}
         {!isLoading &&

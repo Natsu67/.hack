@@ -3,7 +3,7 @@ import css from "./SignUp.module.css";
 // import AuthContext from '../../store/auth-context';
 import Box from "../../UI/Box";
 import * as Icon from "react-bootstrap-icons";
-import Logo from "../../Header/Logo.png";
+import Logo from "../../store/images/Logo.png";
 
 const SignUp = (props) => {
   const loginRef = useRef("");

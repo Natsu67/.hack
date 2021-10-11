@@ -5,7 +5,7 @@ import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 
 const Login = (props) => {
-    const ctx = useContext(AuthContext);
+    const authCtx = useContext(AuthContext);
 
     const [regOrLog, setRegOrLog] = useState(false)
 
@@ -20,14 +20,14 @@ const Login = (props) => {
         });
         const data = await response.json();
         console.log(data);
-        props.onEndLogIn();
+        authCtx.switchLogInNow();
     }
 
     
     return (
         <div>
-            <div className={classes.back} onClick={props.onEndLogIn}></div>
-            {!regOrLog && <SignIn onSuccessLogIn={props.onEndLogIn} onReg={() => setRegOrLog(true)}/>}
+            <div className={classes.back} onClick={authCtx.switchLogInNow}></div>
+            {!regOrLog && <SignIn onReg={() => setRegOrLog(true)}/>}
             {regOrLog && <SignUp onLog={() => setRegOrLog(false)} onCreateUser={signUpHandler}/>}
         </div>
     );
