@@ -2,14 +2,14 @@
     width: 100%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logoImage {
     width: 90px;
     height: 50px;
-    margin: 5px;
+    margin-left: 20px;
 }
 
 .button {
@@ -30,4 +30,27 @@
 
 .button:focus {
     outline: none;
+}
+.RightBox {
+    padding: 0px;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+.UserLogin {
+    margin-right: 15px;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+.UserLogin:hover {
+    text-decoration: underline;
+}
+.Avatar {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
 }

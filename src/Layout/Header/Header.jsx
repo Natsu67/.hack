@@ -11,7 +11,7 @@ const Header = (props) => {
 
   return (
     <Box className={css.Header}>
-      <img src={Logo} className={css.logoImage} alt="Logo" />
+      <Link to="/"><img src={Logo} className={css.logoImage} alt="Logo" /></Link>
       <Nav />
       {!authCtx.isLoggedIn && (
         <button className={css.button} onClick={authCtx.switchLogInNow}>
@@ -19,8 +19,9 @@ const Header = (props) => {
         </button>
       )}
       {authCtx.isLoggedIn && (
-        <div>
-          <Link to="profile">{authCtx.user_login}</Link>{" "}
+        <div className={css.RightBox}>
+          <img src={authCtx.avatarUrl} className={css.Avatar}/>
+          <Link to="profile" className={css.UserLogin}>{authCtx.user_login}</Link>{" "}
           <button className={css.button} onClick={authCtx.logout}>
             Log out
           </button>
