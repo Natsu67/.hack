@@ -85,7 +85,7 @@ const PostList = (props) => {
         {!isLoading &&
           JSON.stringify(postsData).length !== 0 &&
           !error &&
-          Array.from(postsData).map((post) => <Post {...post} />)}
+          Array.from(postsData).map((post) => <Post {...post} onLike={fetchPostsHandler}/>)}
         {!isLoading && JSON.stringify(postsData).length === 0 && !error && (
           <p>We got no posts</p>
         )}

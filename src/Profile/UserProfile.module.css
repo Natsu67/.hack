@@ -1,0 +1,8 @@
+.Main {
+    width: 100%;
+    height: calc(100vh - 250px);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    flex: 1 0 auto;
+}

@@ -1,19 +1,49 @@
-import React from "react";
+import React, {useContext} from "react";
 import Box from "../../../UI/Box";
 import * as Icon from "react-bootstrap-icons";
 import css from "./Post.module.css";
+import AuthContext from "../../../store/auth-context";
 
 
 const Post = (props) => {
+    const authCtx = useContext(AuthContext);
     let contentText = props.content;
     if(contentText.length > 240) contentText = contentText.substring(0, 240) + "...";
+
+    const likeHandler = async (type) => {
+        try {
+            const response = await fetch(
+              `http://hack-ashp.herokuapp.com/api/posts/${props.id}/like`,
+              {
+                method: "POST",
+                body: JSON.stringify({
+                  "type": type
+                }),
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                  Authorization: "Bearer " + authCtx.token,
+                },
+              }
+            );
+            const data = await response.json();
+      
+            if (!response.ok) {
+              throw new Error(data.message);
+            } else {
+              props.onLike();
+            }
+          } catch (error) {
+            alert(error.message);
+          }
+    }
 
     return (
         <Box className={css.Post}>
             <div className={css.PostMark}>
-                <Icon.ChevronUp className={css.MarkButton}/>
+                <Icon.ChevronUp className={css.MarkButton} onClick={()=>likeHandler('like')}/>
                 <span className={css.Rating}>{props.rating}</span>
-                <Icon.ChevronDown className={css.MarkButton}/>
+                <Icon.ChevronDown className={css.MarkButton} onClick={()=>likeHandler('dislike')}/>
             </div>
             <div className={css.PostMain}>
                 <div>

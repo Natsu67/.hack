@@ -10,17 +10,28 @@ const Login = (props) => {
     const [regOrLog, setRegOrLog] = useState(false)
 
     const signUpHandler = async (user) => {
-        const response = await fetch('http://hack-ashp.herokuapp.com/api/auth/register', {
-            method: "POST",
-            body: JSON.stringify(user),
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+        try {
+            const response = await fetch('http://hack-ashp.herokuapp.com/api/auth/register', {
+                method: "POST",
+                body: JSON.stringify(user),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            });
+            const data = await response.json();
+
+            if(!response.ok) {
+                throw new Error(data.message);
+            } else {
+                alert("Sign Up succeed! Now log in");
+                setRegOrLog(false);
+                console.log(data);
             }
-        });
-        const data = await response.json();
-        console.log(data);
-        authCtx.switchLogInNow();
+        
+        } catch (error) {
+            alert(error.message);
+        }
     }
 
     
