@@ -23,7 +23,11 @@
 .UserInfoDiv span {
     margin-bottom: 10px;
 }
-
+.Login {
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+}
 .Login, .FullName, .Rating {
     font-size: 16px;
 }
