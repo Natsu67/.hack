@@ -71,7 +71,7 @@ const PostList = (props) => {
       setError(error.message);
     }
     setIsLoading(false);
-  }, [sortType, sortDir, authCtx.isLoggedIn]);
+  }, [sortType, sortDir, authCtx.isLoggedIn, authCtx.token]);
 
   useEffect(() => {
     fetchPostsHandler();

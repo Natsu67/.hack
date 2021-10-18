@@ -51,7 +51,7 @@ const UserInfo = (props) => {
       <div className={css.InfoDiv}>
         <span className={css.Login}>
           {authCtx.userLogin}
-          {authCtx.role && <span className={css.AdminSpan}>(admin)</span>}
+          {authCtx.role === "admin" && <span className={css.AdminSpan}>(admin)</span>}
         </span>
         <span className={css.FullName}>{authCtx.fullName}</span>
         <span className={css.Email}>{authCtx.email}</span>

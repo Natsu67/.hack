@@ -1,8 +1,11 @@
 import css from "./Sort.module.css";
+import {useContext} from 'react'
 import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import AuthContext from "../../../store/auth-context";
 
 const Sort = (props) => {
+  const authCtx = useContext(AuthContext)
   let dateClass = "";
   let likesClass = "";
 
@@ -50,7 +53,7 @@ const Sort = (props) => {
           </li>
         </ul>
       </div>
-      <Link to='createPost'><button className={css.CreateButton}>Create new post</button></Link>
+      {authCtx.isLoggedIn && <Link to='createPost'><button className={css.CreateButton}>Create new post</button></Link>}
     </div>
   );
 };

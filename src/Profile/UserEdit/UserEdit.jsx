@@ -1,11 +1,9 @@
-import React, { useRef, useContext } from "react";
-import AuthContext from "../../store/auth-context";
+import React, { useRef } from "react";
 import Box from "../../UI/Box";
 
 import css from "./UserEdit.module.css";
 
 const UserEdit = (props) => {
-  const authCtx = useContext(AuthContext);
   const fullName = useRef("");
 
   const submitHandler = async (event) => {

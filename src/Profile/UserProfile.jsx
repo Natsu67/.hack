@@ -1,4 +1,4 @@
-import { useState, useContext, useCallback } from "react";
+import { useState, useContext } from "react";
 import AuthContext from "../store/auth-context";
 import UserEdit from "./UserEdit/UserEdit";
 import UserInfo from "./UserInfo/UserInfo";
