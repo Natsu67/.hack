@@ -5,6 +5,7 @@ import Login from "./Login/Login";
 import CreatePostPage from "./pages/CreatePostPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+import UserListPage from "./pages/UserListPage";
 import AuthContext from "./store/auth-context";
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <HomePage />
+        </Route>
+        <Route path="/users" exact>
+          <UserListPage />
         </Route>
         {ctxAuth.isLoggedIn && (
           <Route path="/profile">
