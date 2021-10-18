@@ -5,6 +5,7 @@
     align-items:center;
     width: 80%;
     margin-top: 10px;
+    min-height: calc(80vh - 250px);
 }
 .PostsAndSort {
     display: flex;

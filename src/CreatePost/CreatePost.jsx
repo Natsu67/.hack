@@ -1,11 +1,10 @@
 import React, { useState, useContext } from "react";
 import AuthContext from "../store/auth-context";
-import { Link, useHistory, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Box from "../UI/Box";
 import css from "./CreatePost.module.css";
 
 const CreatePost = (props) => {
-  const history = useHistory();
   const authCtx = useContext(AuthContext);
   const contentPlaceholderText = "Describe your question...";
 
@@ -24,18 +23,22 @@ const CreatePost = (props) => {
   };
 
   const createPostHandler = async () => {
+    const newPostData = JSON.stringify({
+        title: title,
+        content: content,
+        categories: categories.split(',').map(function (x) { 
+            return parseInt(x, 10); 
+          })
+      });
+    console.log(newPostData);
     try {
       const response = await fetch("http://hack-ashp.herokuapp.com/api/posts", {
         method: "POST",
-        body: JSON.stringify({
-          title: title,
-          content: content,
-          categories: categories.split(','),
-        }),
+        body: newPostData,
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: "Bearer " + authCtx.token,
+          "Accept": "application/json",
+          "Authorization": "Bearer " + authCtx.token,
         },
       });
       const data = await response.json();
