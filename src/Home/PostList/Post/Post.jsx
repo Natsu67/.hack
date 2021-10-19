@@ -3,6 +3,7 @@ import Box from "../../../UI/Box";
 import * as Icon from "react-bootstrap-icons";
 import css from "./Post.module.css";
 import AuthContext from "../../../store/auth-context";
+import { Link } from "react-router-dom";
 
 
 const Post = (props) => {
@@ -53,7 +54,7 @@ const Post = (props) => {
                             return <span key={Category.category_id}>#{Category.category_name}</span>;
                         })}
                         <Icon.Person className={css.PersonIcon}/>
-                        <span>{props.user_login}</span>
+                        <Link to={`/user/${props.user_id}`} className={css.Login} >{props.user_login}</Link>
                     </div>
                     <div className={css.PostContent}>
                         <span className={css.PostContentText}>{contentText}</span>

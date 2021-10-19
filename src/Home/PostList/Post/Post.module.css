@@ -60,6 +60,16 @@
     text-decoration: underline;
     cursor: pointer;
 }
+.Login {
+    margin-right: 5px;
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+}
+.Login:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 .PersonIcon {
     margin-left: 10px;
 }

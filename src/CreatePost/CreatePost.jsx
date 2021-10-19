@@ -1,51 +1,53 @@
 import React, { useState, useContext } from "react";
 import AuthContext from "../store/auth-context";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Box from "../UI/Box";
 import css from "./CreatePost.module.css";
 
 const CreatePost = (props) => {
   const authCtx = useContext(AuthContext);
-  const contentPlaceholderText = "Describe your question...";
-
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const history = useHistory();
+  const [titleVal, setTitleVal] = useState("");
+  const [contentVal, setContentVal] = useState("");
   const [categories, setCategories] = useState("");
 
   const changeTitleHandler = (event) => {
-    setTitle(event.target.value);
+    setTitleVal(event.target.value);
   };
   const changeContentHandler = (event) => {
-    setContent(event.target.value);
+    setContentVal(event.target.value);
   };
   const changeCategoriesHandler = (event) => {
     setCategories(event.target.value);
   };
 
-  const createPostHandler = async () => {
-    const newPostData = JSON.stringify({
-        title: title,
-        content: content,
-        categories: categories.split(',').map(function (x) { 
-            return parseInt(x, 10); 
-          })
-      });
-    console.log(newPostData);
+  const createPostHandler = async (event) => {
+    event.preventDefault();
+
     try {
       const response = await fetch("http://hack-ashp.herokuapp.com/api/posts", {
         method: "POST",
-        body: newPostData,
+        body: JSON.stringify({
+          "title": titleVal,
+          "content": contentVal,
+          "categories": categories.split(',').map(function (x) { 
+            return parseInt(x, 10); 
+          })
+        }),
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
           "Authorization": "Bearer " + authCtx.token,
         },
       });
+      
+
       const data = await response.json();
 
       if (!response.ok) {
         throw new Error(data.message);
       } else {
+        history.push('/');
         console.log(data);
       }
     } catch (error) {
@@ -63,7 +65,7 @@ const CreatePost = (props) => {
               type="text"
               className={css.TitleInput}
               onChange={changeTitleHandler}
-              value={title}
+              value={titleVal}
             />
           </div>
           <div className={css.FormPiece}>
@@ -74,9 +76,9 @@ const CreatePost = (props) => {
               rows="5"
               cols="33"
               className={css.ContentInput}
-              placeholder={contentPlaceholderText}
+              placeholder="Describe your question..."
               onChange={changeContentHandler}
-              value={content}
+              value={contentVal}
             ></textarea>
           </div>
           <div className={css.FormPiece}>
