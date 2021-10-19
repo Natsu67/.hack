@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import Login from "./Login/Login";
+import CategoryPostsPage from "./pages/CategoryPostsPage";
 import CreatePostPage from "./pages/CreatePostPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route path="/user/:user_id" >
           <SingleUserPage/>
+        </Route>
+        <Route path="/category/:category_id/:category_name" >
+          <CategoryPostsPage/>
         </Route>
         {ctxAuth.isLoggedIn && (
           <Route path="/profile">

@@ -60,13 +60,13 @@
     text-decoration: underline;
     cursor: pointer;
 }
-.Login {
+.Link {
     margin-right: 5px;
     font-size: 15px;
     text-decoration: none;
     color: black;
 }
-.Login:hover {
+.Link:hover {
     text-decoration: underline;
     cursor: pointer;
 }

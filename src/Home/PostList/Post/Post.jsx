@@ -51,10 +51,10 @@ const Post = (props) => {
                     <span className={css.PostTitle}>{props.title}</span>
                     <div className={css.CategoriesAndUser}>
                         {Array.from(props.categories).map((Category) => {
-                            return <span key={Category.category_id}>#{Category.category_name}</span>;
+                            return <Link to={`/category/${Category.category_id}/${Category.category_name}`} key={Category.category_id} className={css.Link}>#{Category.category_name}</Link>;
                         })}
                         <Icon.Person className={css.PersonIcon}/>
-                        <Link to={`/user/${props.user_id}`} className={css.Login} >{props.user_login}</Link>
+                        <Link to={`/user/${props.user_id}`} className={css.Link} >{props.user_login}</Link>
                     </div>
                     <div className={css.PostContent}>
                         <span className={css.PostContentText}>{contentText}</span>
