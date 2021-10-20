@@ -59,9 +59,7 @@ const CommentCard = (props) => {
           </div>
           <div className={css.CommentContent}>
             <span className={css.CommentContentText}>
-              {props.content}Tristique nulla aliquet enim tortor at auctor. Nisi
-              quis eleifend quam adipiscing vitae proin sagittis nisl. Fermentum
-              dui faucibus in ornare quam viverra orci sagittis.
+              {props.content}
             </span>
           </div>
         </div>

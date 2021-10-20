@@ -168,7 +168,7 @@ const BigPost = (props) => {
           <div className={css.ButtonsDiv}>
             <button className={css.Button} onClick={editPostHandler}>Save post</button>
             <button
-              className={`${css.Button} ${css.ButtonDeletePost}`}
+              className={`${css.Button} ${css.ButtonCancel}`}
               onClick={() => setIsEditingNow(false)}
             >
               Cancel

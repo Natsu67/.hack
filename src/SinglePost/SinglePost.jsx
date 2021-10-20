@@ -6,6 +6,7 @@ import CommentCard from "./CommentCard/CommentCard";
 import { useHistory } from "react-router";
 
 import css from "./SinglePost.module.css";
+import CreateComment from "./CreateComent/CreateComment";
 
 const SinglePost = (props) => {
   const history = useHistory();
@@ -13,6 +14,7 @@ const SinglePost = (props) => {
   const [postData, setPostData] = useState({});
   const [postComments, setPostComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isCreatePost, setIsCreatePost] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchPostHandler = useCallback(async () => {
@@ -125,6 +127,34 @@ const SinglePost = (props) => {
     }
   }
 
+  const createCommentHandler = async (newData) => {
+    try {
+      const response = await fetch(
+        `http://hack-ashp.herokuapp.com/api/posts/${props.id}/comments`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            "content": newData
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: "Bearer " + authCtx.token,
+          },
+        }
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message);
+      } else {
+        fetchPostCommentsHandler();
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
   useEffect(() => {
     fetchPostHandler();
   }, [fetchPostHandler]);
@@ -147,8 +177,9 @@ const SinglePost = (props) => {
           />
         )}
         <div className={css.LabelPostDiv}>
-          {/* <label>Comments</label> */}
-          <button className={css.CreateButton}>Create new comment</button>
+         {(!authCtx.token && !isCreatePost) &&<label>Comments:</label>}
+          {(authCtx.token && !isCreatePost) && <button className={css.CreateButton} onClick={()=>setIsCreatePost(true)}>Create new comment</button>}
+          {isCreatePost && <CreateComment onEndCreate={()=>setIsCreatePost(false)} onCreateComment={createCommentHandler}/>}
         </div>
         <div className={css.CommentsList}>
           {!isLoading && error && <p>{error}</p>}

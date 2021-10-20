@@ -119,8 +119,11 @@
 .Button:focus {
     outline: none;
 }
-.ButtonDeletePost {
+.ButtonDeletePost, .ButtonCancel {
     background: #8a8a8a;
+}
+.ButtonCancel:hover {
+    background: #1E81B0;
 }
 .ButtonDeletePost:hover {
     background: #f14343;
