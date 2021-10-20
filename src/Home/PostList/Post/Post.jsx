@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Post = (props) => {
     const authCtx = useContext(AuthContext);
     let contentText = props.content;
-    if(contentText.length > 240) contentText = contentText.substring(0, 240) + "...";
+    if(contentText.length > 140) contentText = contentText.substring(0, 140) + "...";
 
     const likeHandler = async (type) => {
         try {

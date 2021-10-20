@@ -80,6 +80,8 @@
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 18px;
+    display: flex;
+    flex-flow: column;
 }
 
 .PostDate {
@@ -122,4 +124,28 @@
 }
 .ButtonDeletePost:hover {
     background: #f14343;
+}
+
+input {
+    height: 1.2rem;
+    margin: 0px;
+    margin-top: 20px;
+}
+
+.ContentInput, input { 
+    resize:vertical;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: solid 2px #1E81B0;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    font-family: -apple-system, BlinkMacSystemFont, "Poppins", 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+input:focus, .ContentInput:focus {
+    outline: none;
 }

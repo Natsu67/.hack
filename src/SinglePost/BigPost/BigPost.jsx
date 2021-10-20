@@ -5,8 +5,45 @@ import css from "./BigPost.module.css";
 import AuthContext from "../../store/auth-context";
 import { Link } from "react-router-dom";
 
+
 const BigPost = (props) => {
   const authCtx = useContext(AuthContext);
+  const [isEditingNow, setIsEditingNow] = useState(false);
+  const [postContent, setPostContent] = useState("");
+  const [postCategories, setPostCategories] = useState("");
+
+  useEffect(() => {
+    setPostContent(props.content)
+  }, [props.content])
+
+  const changePostContentHandler = (event) => {
+    setPostContent(event.target.value);
+  };
+
+  const changePostCategoriesHandler = (event) => {
+    setPostCategories(event.target.value);
+  };
+
+  const editPostHandler = (event) => {
+    event.preventDefault();
+
+    const newData = {};
+    if(postContent.length === 0) {
+      alert("Content can`t be empty");
+      return;
+    } else {
+      newData.content = postContent;
+    }
+
+    if(postCategories.length !== 0) {
+      newData.categories = postCategories.split(',').map(function (x) { 
+        return parseInt(x, 10); 
+      })
+    }
+
+    setIsEditingNow(false);
+    props.onEditPost(newData);
+  };
 
   const postLikeHandler = async (type) => {
     try {
@@ -36,6 +73,16 @@ const BigPost = (props) => {
     }
   };
 
+  const deletePostHandler = (event) => {
+    event.preventDefault();
+
+    let agree = window.confirm("Are you sure?");
+
+    if (agree) {
+      props.onDeletePost();
+    }
+  };
+
   return (
     <div className={css.Wrapper}>
       <Box className={css.BigPost}>
@@ -52,10 +99,7 @@ const BigPost = (props) => {
         </div>
         <div className={css.PostMain}>
           <div>
-            <label className={css.PostTitle}>
-              Nisi quis eleifend quam adipiscing vitae proin sagittis nisl.
-              {props.title}
-            </label>
+            <label className={css.PostTitle}>{props.title}</label>
             <div className={css.CategoriesAndUser}>
               {props.categories &&
                 props.categories.map((Category) => {
@@ -75,19 +119,24 @@ const BigPost = (props) => {
               </Link>
             </div>
             <div className={css.PostContent}>
-              <span className={css.PostContentText}>
-                {props.content}Tristique nulla aliquet enim tortor at auctor.
-                Nisi quis eleifend quam adipiscing vitae proin sagittis nisl.
-                Fermentum dui faucibus in ornare quam viverra orci sagittis. Id
-                neque aliquam vestibulum morbi blandit. Senectus et netus et
-                malesuada fames ac turpis egestas. Amet dictum sit amet justo
-                donec enim diam vulputate ut. Nulla facilisi cras fermentum odio
-                eu feugiat pretium nibh ipsum. Massa ultricies mi quis hendrerit
-                dolor magna eget est lorem.Tristique nulla aliquet enim tortor
-                at auctor. Nisi quis eleifend quam adipiscing vitae proin
-                sagittis nisl. Fermentum dui faucibus in ornare quam viverra
-                orci sagittis.
-              </span>
+              {!isEditingNow && (
+                <span className={css.PostContentText}>{props.content}</span>
+              )}
+              {isEditingNow && (
+                <textarea
+                  className={css.ContentInput}
+                  value={postContent}
+                  onChange={changePostContentHandler}
+                />
+              )}
+              {isEditingNow && (
+                <input
+                  type="text"
+                  className={css.CategoriesInput}
+                  value={postCategories}
+                  onChange={changePostCategoriesHandler}
+                />
+              )}
             </div>
           </div>
           <div>
@@ -97,14 +146,35 @@ const BigPost = (props) => {
           </div>
         </div>
       </Box>
-      {(authCtx.role === "admin" || authCtx.userId === props.user_id) && (
-        <div className={css.ButtonsDiv}>
-          <button className={css.Button}>Edit Post</button>
-          <button className={`${css.Button} ${css.ButtonDeletePost}`}>
-            Delete Post
-          </button>
-        </div>
-      )}
+      {(authCtx.role === "admin" || authCtx.userId === props.user_id) &&
+        !isEditingNow && (
+          <div className={css.ButtonsDiv}>
+            <button
+              className={css.Button}
+              onClick={() => setIsEditingNow(true)}
+            >
+              Edit Post
+            </button>
+            <button
+              className={`${css.Button} ${css.ButtonDeletePost}`}
+              onClick={deletePostHandler}
+            >
+              Delete Post
+            </button>
+          </div>
+        )}
+      {(authCtx.role === "admin" || authCtx.userId === props.user_id) &&
+        isEditingNow && (
+          <div className={css.ButtonsDiv}>
+            <button className={css.Button} onClick={editPostHandler}>Save post</button>
+            <button
+              className={`${css.Button} ${css.ButtonDeletePost}`}
+              onClick={() => setIsEditingNow(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        )}
     </div>
   );
 };
