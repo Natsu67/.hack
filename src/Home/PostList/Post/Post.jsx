@@ -48,7 +48,7 @@ const Post = (props) => {
             </div>
             <div className={css.PostMain}>
                 <div>
-                    <span className={css.PostTitle}>{props.title}</span>
+                    <Link to={`/post/${props.id}`} className={css.PostTitle}>{props.title}</Link>
                     <div className={css.CategoriesAndUser}>
                         {Array.from(props.categories).map((Category) => {
                             return <Link to={`/category/${Category.category_id}/${Category.category_name}`} key={Category.category_id} className={css.Link}>#{Category.category_name}</Link>;

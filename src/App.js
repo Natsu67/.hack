@@ -6,6 +6,7 @@ import CategoryPostsPage from "./pages/CategoryPostsPage";
 import CreatePostPage from "./pages/CreatePostPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+import SinglePostPage from "./pages/SinglePostPage";
 import SingleUserPage from "./pages/SingleUserPage";
 import UserListPage from "./pages/UserListPage";
 import AuthContext from "./store/auth-context";
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route path="/category/:category_id/:category_name" >
           <CategoryPostsPage/>
+        </Route>
+        <Route path="/post/:post_id" >
+          <SinglePostPage/>
         </Route>
         {ctxAuth.isLoggedIn && (
           <Route path="/profile">

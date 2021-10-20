@@ -1,12 +1,10 @@
-.Post {
+.CommentCard {
     display: flex;
     flex-flow: row;
-    width: 480px;
-    height: 180px;
-    margin: 10px;
     padding: 10px;
+    margin: 20px 0px;
 }
-.PostMark {
+.CommentMark {
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -25,63 +23,50 @@
     cursor: pointer;
 }
 
-.PostMain {
+.CommentMain {
     padding: 10px 20px;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
     width: 100%;
+    margin-left: 10px;
 }
 
-.PostTitle {
-    color: #1E81B0;
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: none;
-}
-.PostTitle:hover {
-    color: #249cd4;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.CategoriesAndUser {
+.User {
     display: flex;
     flex-flow: row;
     align-items: center;
     margin-top: 5px;
     padding: 0px;
 }
-.CategoriesAndUser span {
-    font-size: 15px;
-    display: inline;
-    margin-right: 5px;
-}
-.CategoriesAndUser span:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
+
 .Link {
     margin-right: 5px;
-    font-size: 15px;
+    font-size: 20px;
     text-decoration: none;
-    color: black;
+    color: #1E81B0;
+    font-weight: 500;
 }
 .Link:hover {
     text-decoration: underline;
     cursor: pointer;
 }
-.PersonIcon {
-    margin-left: 10px;
+.PersonAvatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
 }
 
-.PostContent {
-    margin-top: 10px;
-    font-size: 15px;
+.CommentContent {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 18px;
 }
 
-.PostDate {
-    font-size: 12px;
+.CommentDate {
+    font-size: 14px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;

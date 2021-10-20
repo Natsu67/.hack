@@ -1,0 +1,44 @@
+.Main {
+    width: 100%;
+    min-height: calc(100vh - 250px);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    flex: 1 0 auto;
+}
+.CommentsDiv {
+    width: 70%;
+    max-width: 1000px;
+    display: flex;
+    flex-flow: column;
+    margin-top: 20px;
+}
+.LabelPostDiv {
+    font-size: 22px;
+}
+.NoComments {
+    font-size: 20px;
+    text-align: center;
+}
+.CreateButton {
+    border: none;
+    background: transparent;
+    border: solid 2px #1E81B0;
+    color: #1E81B0;
+    padding: 0.65rem 1.3rem;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    transition: 0.1s;
+    margin-left: 10px;
+}
+
+.CreateButton:hover,
+.CreateButton:active {
+    background: #249cd4;
+    color: white;
+}
+
+.CreateButton:focus {
+    outline: none;
+}

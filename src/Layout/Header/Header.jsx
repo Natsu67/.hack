@@ -21,7 +21,7 @@ const Header = (props) => {
       {authCtx.isLoggedIn && (
         <div className={css.RightBox}>
           <img src={authCtx.avatarUrl} className={css.Avatar} alt='User avatar'/>
-          <Link to="profile" className={css.UserLogin}>{authCtx.userLogin}</Link>{" "}
+          <Link to="/profile" className={css.UserLogin}>{authCtx.userLogin}</Link>{" "}
           <button className={css.button} onClick={authCtx.logout}>
             Log out
           </button>

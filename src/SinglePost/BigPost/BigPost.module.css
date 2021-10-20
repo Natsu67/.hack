@@ -1,0 +1,125 @@
+.Wrapper {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+.BigPost {
+    display: flex;
+    flex-flow: row;
+    width: 70%;
+    max-width: 1000px;
+}
+
+.PostMark {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-left: 20px;
+    padding: 10px 0px;
+}
+.Rating {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.Rating:hover {
+    cursor: default;
+}
+.MarkButton:hover {
+    cursor: pointer;
+}
+
+.PostMain {
+    padding: 20px 30px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 20px;
+}
+.PostTitle {
+    color: #1E81B0;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0px;
+}
+.PostTitle:hover {
+    text-decoration: underline;
+}
+.CategoriesAndUser {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    margin-top: 5px;
+    padding: 0px;
+}
+
+.Link {
+    margin-right: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+}
+.Link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.PersonAvatar {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.PostContent {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.PostDate {
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    opacity: .6;
+    cursor: default;
+}
+.ButtonsDiv {
+    display: flex;
+    flex-flow: row wrap;
+    width: 70%;
+    max-width: 1000px;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+.Button {
+    margin-left: 10px;
+    border: none;
+    background: #1E81B0;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.1s;
+}
+
+.Button:hover,
+.Button:active {
+    background: #249cd4;
+}
+
+.Button:focus {
+    outline: none;
+}
+.ButtonDeletePost {
+    background: #8a8a8a;
+}
+.ButtonDeletePost:hover {
+    background: #f14343;
+}
