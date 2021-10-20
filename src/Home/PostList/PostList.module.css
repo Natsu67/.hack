@@ -13,3 +13,11 @@
     justify-content:center;
     align-items:center;
 }
+@media all and (max-width: 540px) {
+    .PostsAndSort {
+        width: 100%;
+    }
+    .PostList {
+        width: 90%;
+    }
+  }

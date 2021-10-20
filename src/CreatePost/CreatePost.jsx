@@ -66,6 +66,7 @@ const CreatePost = (props) => {
               className={css.TitleInput}
               onChange={changeTitleHandler}
               value={titleVal}
+              className={css.Input}
             />
           </div>
           <div className={css.FormPiece}>
@@ -88,6 +89,7 @@ const CreatePost = (props) => {
               className={css.CategoriesInput}
               onChange={changeCategoriesHandler}
               value={categories}
+              className={css.Input}
             />
           </div>
           <div className={css.ButtonsDiv}>

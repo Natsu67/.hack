@@ -24,8 +24,7 @@ label {
     margin-left: 10px;
     font-size: 18px;
 }
-input {
-    margin: 10px;
+.Input {
     height: 1.2rem;
     padding: .375rem .75rem;
     font-size: .9375rem;
@@ -35,6 +34,7 @@ input {
     background-clip: padding-box;
     border: solid 2px #1E81B0;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin: 10px;
 }
 
 .ContentInput { 
@@ -81,3 +81,8 @@ input:focus, .ContentInput:focus {
 .ButtonCancel {
     background: #8a8a8a;
 }
+@media all and (max-width: 1000px) {
+    .CreatePostBox {
+        width: 80%;
+    }
+  }

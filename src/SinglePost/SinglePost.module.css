@@ -43,3 +43,8 @@
 .CreateButton:focus {
     outline: none;
 }
+@media all and (max-width: 640px) {
+    .CommentsDiv {
+        width: 94%;
+    }
+  }

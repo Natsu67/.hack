@@ -52,3 +52,17 @@
 .CreateButton:focus {
     outline: none;
 }
+@media all and (max-width: 540px) {
+    .LabelPostDiv {
+        width: 100%;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+    label {
+        margin: 0px;
+    }
+    .UserPostList {
+        width: 90%;
+    }
+  }

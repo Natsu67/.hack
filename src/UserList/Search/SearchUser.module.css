@@ -36,3 +36,14 @@
 .searchContainer button:hover {
     background: #249cd4;
 }
+@media all and (max-width: 750px) {
+    .SearchField {
+        width: 80%;
+    }
+    .searchContainer button{
+        width: 20%;
+    }
+    .searchContainer {
+        width: 90%;
+    }
+  }
