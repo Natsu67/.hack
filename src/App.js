@@ -6,6 +6,8 @@ import CategoryPostsPage from "./pages/CategoryPostsPage";
 import CreatePostPage from "./pages/CreatePostPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+import SearchPostsPage from "./pages/SearchPostsPage";
+import SearchUsersPage from "./pages/SearchUsersPage";
 import SinglePostPage from "./pages/SinglePostPage";
 import SingleUserPage from "./pages/SingleUserPage";
 import UserListPage from "./pages/UserListPage";
@@ -32,6 +34,12 @@ function App() {
         </Route>
         <Route path="/post/:post_id" >
           <SinglePostPage/>
+        </Route>
+        <Route path="/posts/search/:search_text" >
+          <SearchPostsPage/>
+        </Route>
+        <Route path="/users/search/:search_text" >
+          <SearchUsersPage/>
         </Route>
         {ctxAuth.isLoggedIn && (
           <Route path="/profile">
