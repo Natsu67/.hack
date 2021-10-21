@@ -6,7 +6,7 @@ const Nav = (props) => {
         <ul className ={css.Nav}>
             <li><Link to="/">Posts</Link></li>
             <li><Link to="/users">Users</Link></li>
-            <li><a href="###">About</a></li>
+            <li><Link to="/about">About</Link></li>
         </ul>
     );
 }

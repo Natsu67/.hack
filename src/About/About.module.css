@@ -1,0 +1,12 @@
+.Main {
+    width: 100%;
+    min-height: calc(100vh - 250px);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 auto;
+}
+.ComingSoon {
+    font-size: 30px;
+}

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import Login from "./Login/Login";
+import AboutPage from "./pages/AboutPage";
 import CategoryPostsPage from "./pages/CategoryPostsPage";
 import CreatePostPage from "./pages/CreatePostPage";
 import HomePage from "./pages/HomePage";
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route path="/users/search/:search_text" >
           <SearchUsersPage/>
+        </Route>
+        <Route path="/about" >
+          <AboutPage/>
         </Route>
         {ctxAuth.isLoggedIn && (
           <Route path="/profile">
