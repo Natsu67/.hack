@@ -1,13 +1,11 @@
-import React, {useState, useContext, useCallback, useEffect} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import Loader from 'react-loader-spinner';
-import Post from '../HomePage/PostList/Post/Post';
+import Post from '../Post/Post';
 import Search from '../Search/Search';
-import AuthContext from '../store/auth-context';
 
 import css from './SearchPosts.module.css';
 
 const SearchPosts = (props) => {
-    const authCtx = useContext(AuthContext);
     const [postsData, setPostsData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);

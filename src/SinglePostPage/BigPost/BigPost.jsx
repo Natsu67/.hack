@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useCallback } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Box from "../../UI/Box";
 import * as Icon from "react-bootstrap-icons";
 import css from "./BigPost.module.css";
@@ -114,7 +114,7 @@ const BigPost = (props) => {
                     </Link>
                   );
                 })}
-              <img src={props.user_avatar_url} className={css.PersonAvatar} />
+              <img src={props.user_avatar_url} className={css.PersonAvatar} alt="user avatar"/>
               <Link to={`/user/${props.user_id}`} className={css.Link}>
                 {props.user_login}
               </Link>

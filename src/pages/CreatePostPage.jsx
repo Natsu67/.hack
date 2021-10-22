@@ -1,5 +1,5 @@
 import React from 'react';
-import CreatePost from '../CreatePost/CreatePost';
+import CreatePost from '../CreatePostPage/CreatePost';
 
 const CreatePostPage = (props) => {
   return <CreatePost/>

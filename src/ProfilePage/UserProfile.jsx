@@ -1,7 +1,7 @@
 import { useState, useContext, useCallback, useEffect } from "react";
 import Loader from "react-loader-spinner";
 import { Link } from "react-router-dom";
-import Post from "../HomePage/PostList/Post/Post";
+import Post from "../Post/Post";
 import AuthContext from "../store/auth-context";
 import UserEdit from "./UserEdit/UserEdit";
 import UserInfo from "./UserInfo/UserInfo";
@@ -73,7 +73,7 @@ const UserProfile = (props) => {
       setError(error.message);
     }
     setIsLoading(false);
-  }, [authCtx.fullName, authCtx.avatarUrl, authCtx.userId, authCtx.userLogin]);
+  }, [ authCtx.userId, authCtx.userLogin]);
 
   useEffect(() => {
     fetchPostsHandler();

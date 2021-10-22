@@ -4,7 +4,7 @@ import Loader from "react-loader-spinner";
 import css from "./PostList.module.css";
 import Sort from "./Sort/Sort";
 import AuthContext from "../../store/auth-context";
-import Post from "./Post/Post";
+import Post from "../../Post/Post";
 
 const PostList = (props) => {
   const [postsData, setPostsData] = useState([]);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Loader from "react-loader-spinner";
-import Post from "../HomePage/PostList/Post/Post";
+import Post from "../Post/Post";
 
 import css from "./SingleUser.module.css";
 import SingleUserInfo from "./SingleUserInfo/SingleUserInfo";

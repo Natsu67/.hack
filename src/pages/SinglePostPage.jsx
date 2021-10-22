@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router";
-import SinglePost from "../SinglePost/SinglePost";
+import SinglePost from "../SinglePostPage/SinglePost";
 
 const SinglePostPage = (props) => {
   let { post_id } = useParams();

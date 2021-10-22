@@ -35,7 +35,7 @@ const CreateComment = (props) => {
       <div className={css.CommentMain}>
         <div>
           <div className={css.User}>
-            <img src={authCtx.avatarUrl} className={css.PersonAvatar} />
+            <img src={authCtx.avatarUrl} className={css.PersonAvatar} alt="user avatar"/>
             <Link to={`/user/${props.user_id}`} className={css.Link}>
               {authCtx.userLogin}
             </Link>

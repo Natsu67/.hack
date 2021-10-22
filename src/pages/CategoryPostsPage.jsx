@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router";
-import CategoryPost from "../CategoryPosts/CategoryPosts";
+import CategoryPost from "../CategoryPostsPage/CategoryPosts";
 
 const CategoryPostsPage = (props) => {
   let { category_id, category_name} = useParams();

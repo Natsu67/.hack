@@ -10,7 +10,7 @@ const Search = (props) => {
         if(props.search_text) {
             setSearch(props.search_text);
         }
-    }, []);
+    }, [props.search_text]);
 
     const searchChangeHandler = (event) => {
         setSearch(event.target.value);

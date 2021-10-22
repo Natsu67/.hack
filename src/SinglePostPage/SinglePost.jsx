@@ -47,7 +47,7 @@ const SinglePost = (props) => {
       setError(error.message);
     }
     setIsLoading(false);
-  }, [props.id]);
+  }, [props.id, authCtx.isLoggedIn, authCtx.token]);
 
   const fetchPostCommentsHandler = useCallback(async () => {
     setIsLoading(true);

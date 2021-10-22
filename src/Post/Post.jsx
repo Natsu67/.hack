@@ -1,9 +1,9 @@
 import React, {useContext} from "react";
-import Box from "../../../UI/Box";
 import * as Icon from "react-bootstrap-icons";
 import css from "./Post.module.css";
-import AuthContext from "../../../store/auth-context";
 import { Link } from "react-router-dom";
+import Box from "../UI/Box";
+import AuthContext from "../store/auth-context";
 
 
 const Post = (props) => {
