@@ -15,11 +15,13 @@ const Search = (props) => {
     const searchChangeHandler = (event) => {
         setSearch(event.target.value);
     }
+    
+const link = `${props.searchUrl}/${search}`;
 
     return (
         <form className={css.searchContainer}>
             <input type="text" placeholder="Search.." name="search" className={css.SearchField} onChange={searchChangeHandler} value={search}/>
-            <Link to={`/posts/search/${search}`} className={css.Link}><button type="submit"><Icon.Search color='white'/></button></Link>
+            <Link to={link} className={css.Link}><button type="submit"><Icon.Search color='white'/></button></Link>
         </form>
     );
 }

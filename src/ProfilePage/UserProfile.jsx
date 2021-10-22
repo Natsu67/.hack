@@ -1,7 +1,7 @@
 import { useState, useContext, useCallback, useEffect } from "react";
 import Loader from "react-loader-spinner";
 import { Link } from "react-router-dom";
-import Post from "../Home/PostList/Post/Post";
+import Post from "../HomePage/PostList/Post/Post";
 import AuthContext from "../store/auth-context";
 import UserEdit from "./UserEdit/UserEdit";
 import UserInfo from "./UserInfo/UserInfo";

@@ -1,6 +1,6 @@
 import React, {useState, useCallback, useEffect} from 'react';
 import Loader from 'react-loader-spinner';
-import SearchUser from '../UserList/Search/SearchUser';
+import Search from '../Search/Search';
 import UserCard from '../UserList/UserCard/UserCard';
 
 import css from './SearchUsers.module.css';
@@ -48,7 +48,7 @@ const SearchUsers = (props) => {
 
   return (
     <main className={css.Main}>
-        <SearchUser search_text={props.search_text}/>
+        <Search search_text={props.search_text} searchUrl={`/users/search`}/>
         <div className={css.UserList}>
             {!isLoading && error && <p>{error}</p>}
             {!isLoading && usersData.length === 0 && !error && (

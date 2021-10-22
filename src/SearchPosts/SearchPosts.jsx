@@ -1,7 +1,7 @@
 import React, {useState, useContext, useCallback, useEffect} from 'react';
 import Loader from 'react-loader-spinner';
-import Post from '../Home/PostList/Post/Post';
-import Search from '../Home/Search/Search';
+import Post from '../HomePage/PostList/Post/Post';
+import Search from '../Search/Search';
 import AuthContext from '../store/auth-context';
 
 import css from './SearchPosts.module.css';
@@ -50,7 +50,7 @@ const SearchPosts = (props) => {
 
   return (
     <main className={css.Main}>
-        <Search search_text={props.search_text}/>
+        <Search search_text={props.search_text} searchUrl={`/posts/search`}/>
         <div className={css.PostList}>
             {!isLoading && error && <p>{error}</p>}
             {!isLoading &&

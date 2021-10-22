@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import css from './Nav.module.css';
 import { Link, useLocation } from 'react-router-dom';
 

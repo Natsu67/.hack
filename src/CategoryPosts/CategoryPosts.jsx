@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Loader from "react-loader-spinner";
-import Post from "../Home/PostList/Post/Post";
+import Post from "../HomePage/PostList/Post/Post";
 
 import css from "./CategoryPosts.module.css";
 

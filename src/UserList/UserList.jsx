@@ -3,7 +3,7 @@ import Loader from "react-loader-spinner";
 
 import css from "./UserList.module.css";
 import UserCard from "./UserCard/UserCard";
-import SearchUser from "./Search/SearchUser";
+import Search from "../Search/Search";
 
 const UserList = (props) => {
   const [usersData, setUsersData] = useState([]);
@@ -45,7 +45,7 @@ const UserList = (props) => {
 
   return (
     <div className={css.Main}>
-        <SearchUser/>
+        <Search searchUrl={`/users/search`}/>
         <div className={css.UserList}>
         {!isLoading && error && <p>{error}</p>}
         {!isLoading &&
