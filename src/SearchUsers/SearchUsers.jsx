@@ -1,7 +1,5 @@
-import React, {useState, useContext, useCallback, useEffect} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import Loader from 'react-loader-spinner';
-import Post from '../Home/PostList/Post/Post';
-import AuthContext from '../store/auth-context';
 import SearchUser from '../UserList/Search/SearchUser';
 import UserCard from '../UserList/UserCard/UserCard';
 
@@ -54,7 +52,7 @@ const SearchUsers = (props) => {
         <div className={css.UserList}>
             {!isLoading && error && <p>{error}</p>}
             {!isLoading && usersData.length === 0 && !error && (
-              <p>We got no users</p>
+              <p>We got no users with "{props.search_text}"</p>
             )}
             {!isLoading &&
             JSON.stringify(usersData).length !== 0 &&

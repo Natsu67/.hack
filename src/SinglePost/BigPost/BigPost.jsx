@@ -4,6 +4,7 @@ import * as Icon from "react-bootstrap-icons";
 import css from "./BigPost.module.css";
 import AuthContext from "../../store/auth-context";
 import { Link } from "react-router-dom";
+import TextareaAutosize from 'react-textarea-autosize';
 
 
 const BigPost = (props) => {
@@ -123,7 +124,7 @@ const BigPost = (props) => {
                 <span className={css.PostContentText}>{props.content}</span>
               )}
               {isEditingNow && (
-                <textarea
+                <TextareaAutosize
                   className={css.ContentInput}
                   value={postContent}
                   onChange={changePostContentHandler}

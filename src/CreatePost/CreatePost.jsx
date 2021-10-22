@@ -3,6 +3,7 @@ import AuthContext from "../store/auth-context";
 import { Link, useHistory } from "react-router-dom";
 import Box from "../UI/Box";
 import css from "./CreatePost.module.css";
+import TextareaAutosize from 'react-textarea-autosize';
 
 const CreatePost = (props) => {
   const authCtx = useContext(AuthContext);
@@ -56,14 +57,13 @@ const CreatePost = (props) => {
   };
 
   return (
-    <main className={css.Main}>
+    <div className={css.Main}>
       <Box className={css.CreatePostBox}>
         <form onSubmit={createPostHandler}>
           <div className={css.FormPiece}>
             <label>Title:</label>
             <input
               type="text"
-              className={css.TitleInput}
               onChange={changeTitleHandler}
               value={titleVal}
               className={css.Input}
@@ -71,22 +71,20 @@ const CreatePost = (props) => {
           </div>
           <div className={css.FormPiece}>
             <label>Content:</label>
-            <textarea
+            <TextareaAutosize
               id="story"
               name="story"
-              rows="5"
-              cols="33"
+              minRows="5"
               className={css.ContentInput}
               placeholder="Describe your question..."
               onChange={changeContentHandler}
               value={contentVal}
-            ></textarea>
+            />
           </div>
           <div className={css.FormPiece}>
             <label>Categories:</label>
             <input
               type="text"
-              className={css.CategoriesInput}
               onChange={changeCategoriesHandler}
               value={categories}
               className={css.Input}
@@ -104,7 +102,7 @@ const CreatePost = (props) => {
           </div>
         </form>
       </Box>
-    </main>
+    </div>
   );
 };
 

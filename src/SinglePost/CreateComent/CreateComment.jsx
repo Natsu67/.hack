@@ -4,6 +4,7 @@ import * as Icon from "react-bootstrap-icons";
 import css from "./CreateComment.module.css";
 import { Link } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
+import TextareaAutosize from 'react-textarea-autosize';
 
 const CreateComment = (props) => {
   const authCtx = useContext(AuthContext);
@@ -40,7 +41,7 @@ const CreateComment = (props) => {
             </Link>
           </div>
           <div className={css.CommentContent}>
-            <textarea
+            <TextareaAutosize
               value={commentContent}
               onChange={changeCommentContentHandler}
               className={css.ContentInput}

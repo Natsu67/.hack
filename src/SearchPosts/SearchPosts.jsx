@@ -15,7 +15,6 @@ const SearchPosts = (props) => {
     const fetchPostsHandler = useCallback(async () => {
         setIsLoading(true);
         setError(null);
-        console.log(props.search_text);
         try {
           const response = await fetch(
             `http://hack-ashp.herokuapp.com/api/posts/search/post`,
