@@ -73,6 +73,39 @@ const PostList = (props) => {
     setIsLoading(false);
   }, [sortType, sortDir, authCtx.isLoggedIn, authCtx.token]);
 
+  const fetchPostsHandlerAfterLike = useCallback(async () => {
+    setError(null);
+    try {
+      const response = await fetch(
+        `http://hack-ashp.herokuapp.com/api/posts?sort=${sortType}&dir=${sortDir}`,
+        {
+          method: "GET",
+          headers: authCtx.isLoggedIn
+            ? {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: "Bearer " + authCtx.token,
+              }
+            : {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Something went wrong");
+      }
+
+      const data = await response.json();
+      const transformedData = data.map((Post) => {
+        return { key: Post.id, ...Post };
+      });
+      setPostsData(Array.from(transformedData));
+    } catch (error) {
+      setError(error.message);
+    }
+  }, [sortType, sortDir, authCtx.isLoggedIn, authCtx.token]);
+
   useEffect(() => {
     fetchPostsHandler();
   }, [fetchPostsHandler]);
@@ -85,7 +118,7 @@ const PostList = (props) => {
         {!isLoading &&
           JSON.stringify(postsData).length !== 0 &&
           !error &&
-          Array.from(postsData).map((post) => <Post {...post} onLike={fetchPostsHandler}/>)}
+          Array.from(postsData).map((post) => <Post {...post} onLike={fetchPostsHandlerAfterLike}/>)}
         {!isLoading && JSON.stringify(postsData).length === 0 && !error && (
           <p>We got no posts</p>
         )}
