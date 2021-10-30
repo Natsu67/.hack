@@ -1,9 +1,10 @@
 .Header {
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
+    overflow-x:hidden
 }
 
 .logoImage {

@@ -48,3 +48,18 @@
         width: 94%;
     }
   }
+
+.MyNode-enter {
+    opacity: 0;
+}
+.MyNode-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+}
+.MyNode-exit {
+    opacity: 1; 
+}
+.MyNode-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+}

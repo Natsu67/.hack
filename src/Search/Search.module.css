@@ -1,6 +1,6 @@
 .searchContainer {
     margin-top: 15px;
-    width: 60%;
+    width: 60vw;
     display: flex;
     flex-flow: row;
     justify-content: center;
@@ -43,12 +43,12 @@
 }
 @media all and (max-width: 750px) {
     .SearchField {
-        width: 80%;
+        width: 80vw;
     }
     .searchContainer .Link{
-        width: 20%;
+        width: 20vw;
     }
     .searchContainer {
-        width: 90%;
+        width: 90vw;
     }
   }

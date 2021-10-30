@@ -55,3 +55,8 @@
 .AvatarDiv>input {
     display: none;
 }
+@media all and (max-width: 370px) {
+    .InfoDiv{
+        margin-left: 0px;
+    }
+  }

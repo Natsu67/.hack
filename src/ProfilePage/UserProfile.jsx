@@ -6,6 +6,7 @@ import AuthContext from "../store/auth-context";
 import UserEdit from "./UserEdit/UserEdit";
 import UserInfo from "./UserInfo/UserInfo";
 import css from "./UserProfile.module.css";
+import Fade from "react-reveal/Fade";
 
 const UserProfile = (props) => {
   const [postsData, setPostsData] = useState([]);
@@ -73,7 +74,7 @@ const UserProfile = (props) => {
       setError(error.message);
     }
     setIsLoading(false);
-  }, [ authCtx.userId, authCtx.userLogin]);
+  }, [authCtx.userId, authCtx.userLogin]);
 
   useEffect(() => {
     fetchPostsHandler();
@@ -83,14 +84,18 @@ const UserProfile = (props) => {
     <main className={css.Main}>
       <UserInfo show={editShow} onShowEdit={() => setEditShow(true)} />
       {editShow && (
-        <UserEdit
-          onCancel={() => setEditShow(false)}
-          onSave={saveEditHandler}
-        />
+        <Fade duration={500}>
+          <UserEdit
+            onCancel={() => setEditShow(false)}
+            onSave={saveEditHandler}
+          />
+        </Fade>
       )}
       <div className={css.LabelPostDiv}>
         <label>Posts</label>
-        <Link to='createPost'><button className={css.CreateButton}>Create new post</button></Link>
+        <Link to="createPost">
+          <button className={css.CreateButton}>Create new post</button>
+        </Link>
       </div>
       <div className={css.UserPostList}>
         {!isLoading && error && <p>{error}</p>}

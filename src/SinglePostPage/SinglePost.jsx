@@ -4,7 +4,7 @@ import AuthContext from "../store/auth-context";
 import BigPost from "./BigPost/BigPost";
 import CommentCard from "./CommentCard/CommentCard";
 import { useHistory } from "react-router";
-
+import { CSSTransition  } from "react-transition-group";
 import css from "./SinglePost.module.css";
 import CreateComment from "./CreateComent/CreateComment";
 
@@ -179,7 +179,7 @@ const SinglePost = (props) => {
         <div className={css.LabelPostDiv}>
          {(!authCtx.token && !isCreatePost) &&<label>Comments:</label>}
           {(authCtx.token && !isCreatePost) && <button className={css.CreateButton} onClick={()=>setIsCreatePost(true)}>Create new comment</button>}
-          {isCreatePost && <CreateComment onEndCreate={()=>setIsCreatePost(false)} onCreateComment={createCommentHandler}/>}
+          {isCreatePost && <CSSTransition unmountOnExit in={isCreatePost} timeout={1000} classNames={css.MyNode} ><CreateComment onEndCreate={()=>setIsCreatePost(false)} onCreateComment={createCommentHandler}/></CSSTransition>}
         </div>
         <div className={css.CommentsList}>
           {!isLoading && error && <p>{error}</p>}

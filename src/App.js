@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import Login from "./Login/Login";
-import AboutPage from "./Pages/AboutPage";
 import CategoryPostsPage from "./Pages/CategoryPostsPage";
 import CreatePostPage from "./Pages/CreatePostPage";
 import HomePage from "./Pages/HomePage";
+import AboutPage from "./Pages/AboutPage";
 import ProfilePage from "./Pages/ProfilePage";
 import SearchPostsPage from "./Pages/SearchPostsPage";
 import SearchUsersPage from "./Pages/SearchUsersPage";
@@ -13,7 +13,7 @@ import SinglePostPage from "./Pages/SinglePostPage";
 import SingleUserPage from "./Pages/SingleUserPage";
 import UserListPage from "./Pages/UserListPage";
 import AuthContext from "./store/auth-context";
-
+import { CSSTransition } from 'react-transition-group'
 function App() {
   const ctxAuth = useContext(AuthContext);
 
