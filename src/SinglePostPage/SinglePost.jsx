@@ -5,7 +5,7 @@ import BigPost from "./BigPost/BigPost";
 import CommentCard from "./CommentCard/CommentCard";
 import { useHistory } from "react-router";
 import { CSSTransition } from "react-transition-group";
-import css from "./SinglePost.module.scss";
+import scss from "./SinglePost.module.scss";
 import CreateComment from "./CreateComent/CreateComment";
 
 const SinglePost = (props) => {
@@ -67,7 +67,10 @@ const SinglePost = (props) => {
       }
 
       const data = await response.json();
-      setPostComments(data);
+      const transformedData = data.map((Comment) => {
+        return { key: Comment.id, ...Comment };
+      });
+      setPostComments(Array.from(transformedData));
     } catch (error) {
       setError(error.message);
     }
@@ -163,7 +166,7 @@ const SinglePost = (props) => {
   }, [fetchPostCommentsHandler]);
 
   return (
-    <main className={css.Main}>
+    <main className={scss.Main}>
       <BigPost
         id={props.id}
         onPostLike={fetchPostHandler}
@@ -171,7 +174,7 @@ const SinglePost = (props) => {
         onEditPost={editPostHandler}
         {...postData}
       />
-      <div className={css.CommentsDiv}>
+      <div className={scss.CommentsDiv}>
         {isLoading && (
           <Loader
             type="TailSpin"
@@ -181,11 +184,11 @@ const SinglePost = (props) => {
             timeout={3000}
           />
         )}
-        <div className={css.LabelPostDiv}>
+        <div className={scss.LabelPostDiv}>
           {!authCtx.token && !isCreatePost && <label>Comments:</label>}
           {authCtx.token && !isCreatePost && (
             <button
-              className={css.CreateButton}
+              className={scss.CreateButton}
               onClick={() => setIsCreatePost(true)}
             >
               Create new comment
@@ -201,10 +204,10 @@ const SinglePost = (props) => {
               exit:0
             }}
             classNames={{
-              enter: css.MyNodeEnter,
-              enterActive: css.MyNodeEnterActive,
-              exit: css.MyNoExit,
-              exitActive: css.MyNodeExitActive,
+              enter: scss.MyNodeEnter,
+              enterActive: scss.MyNodeEnterActive,
+              exit: scss.MyNoExit,
+              exitActive: scss.MyNodeExitActive,
             }}
           >
             <CreateComment
@@ -213,10 +216,10 @@ const SinglePost = (props) => {
             />
           </CSSTransition>
         </div>
-        <div className={css.CommentsList}>
+        <div className={scss.CommentsList}>
           {!isLoading && error && <p>{error}</p>}
           {!isLoading && postComments.length === 0 && !error && (
-            <p className={css.NoComments}>There are no comments yet</p>
+            <p className={scss.NoComments}>There are no comments yet</p>
           )}
           {!isLoading &&
             JSON.stringify(postComments).length !== 0 &&
