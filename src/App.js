@@ -13,7 +13,7 @@ import SinglePostPage from "./Pages/SinglePostPage";
 import SingleUserPage from "./Pages/SingleUserPage";
 import UserListPage from "./Pages/UserListPage";
 import AuthContext from "./store/auth-context";
-import { CSSTransition } from 'react-transition-group'
+
 function App() {
   const ctxAuth = useContext(AuthContext);
 

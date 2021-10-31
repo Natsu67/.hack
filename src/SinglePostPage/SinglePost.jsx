@@ -4,8 +4,8 @@ import AuthContext from "../store/auth-context";
 import BigPost from "./BigPost/BigPost";
 import CommentCard from "./CommentCard/CommentCard";
 import { useHistory } from "react-router";
-import { CSSTransition  } from "react-transition-group";
-import css from "./SinglePost.module.css";
+import { CSSTransition } from "react-transition-group";
+import css from "./SinglePost.module.scss";
 import CreateComment from "./CreateComent/CreateComment";
 
 const SinglePost = (props) => {
@@ -43,7 +43,6 @@ const SinglePost = (props) => {
       const data = await response.json();
       setPostData(data);
     } catch (error) {
-
       setError(error.message);
     }
     setIsLoading(false);
@@ -94,7 +93,7 @@ const SinglePost = (props) => {
         throw new Error(data.message);
       } else {
         alert("Post is deleted");
-        history.replace('/');
+        history.replace("/");
       }
     } catch (error) {
       alert(error.message);
@@ -125,7 +124,7 @@ const SinglePost = (props) => {
     } catch (error) {
       alert(error.message);
     }
-  }
+  };
 
   const createCommentHandler = async (newData) => {
     try {
@@ -134,7 +133,7 @@ const SinglePost = (props) => {
         {
           method: "POST",
           body: JSON.stringify({
-            "content": newData
+            content: newData,
           }),
           headers: {
             "Content-Type": "application/json",
@@ -153,7 +152,7 @@ const SinglePost = (props) => {
     } catch (error) {
       alert(error.message);
     }
-  }
+  };
 
   useEffect(() => {
     fetchPostHandler();
@@ -165,7 +164,13 @@ const SinglePost = (props) => {
 
   return (
     <main className={css.Main}>
-      <BigPost id={props.id} onPostLike={fetchPostHandler} onDeletePost={deletePostHandler} onEditPost={editPostHandler} {...postData} />
+      <BigPost
+        id={props.id}
+        onPostLike={fetchPostHandler}
+        onDeletePost={deletePostHandler}
+        onEditPost={editPostHandler}
+        {...postData}
+      />
       <div className={css.CommentsDiv}>
         {isLoading && (
           <Loader
@@ -177,9 +182,36 @@ const SinglePost = (props) => {
           />
         )}
         <div className={css.LabelPostDiv}>
-         {(!authCtx.token && !isCreatePost) &&<label>Comments:</label>}
-          {(authCtx.token && !isCreatePost) && <button className={css.CreateButton} onClick={()=>setIsCreatePost(true)}>Create new comment</button>}
-          {isCreatePost && <CSSTransition unmountOnExit in={isCreatePost} timeout={1000} classNames={css.MyNode} ><CreateComment onEndCreate={()=>setIsCreatePost(false)} onCreateComment={createCommentHandler}/></CSSTransition>}
+          {!authCtx.token && !isCreatePost && <label>Comments:</label>}
+          {authCtx.token && !isCreatePost && (
+            <button
+              className={css.CreateButton}
+              onClick={() => setIsCreatePost(true)}
+            >
+              Create new comment
+            </button>
+          )}
+
+          <CSSTransition
+            mountOnEnter
+            unmountOnExit
+            in={isCreatePost}
+            timeout={{
+              enter:400,
+              exit:0
+            }}
+            classNames={{
+              enter: css.MyNodeEnter,
+              enterActive: css.MyNodeEnterActive,
+              exit: css.MyNoExit,
+              exitActive: css.MyNodeExitActive,
+            }}
+          >
+            <CreateComment
+              onEndCreate={() => setIsCreatePost(false)}
+              onCreateComment={createCommentHandler}
+            />
+          </CSSTransition>
         </div>
         <div className={css.CommentsList}>
           {!isLoading && error && <p>{error}</p>}
