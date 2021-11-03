@@ -2,16 +2,16 @@ import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import Login from "./Login/Login";
-import CategoryPostsPage from "./Pages/CategoryPostsPage";
-import CreatePostPage from "./Pages/CreatePostPage";
-import HomePage from "./Pages/HomePage";
-import AboutPage from "./Pages/AboutPage";
-import ProfilePage from "./Pages/ProfilePage";
-import SearchPostsPage from "./Pages/SearchPostsPage";
-import SearchUsersPage from "./Pages/SearchUsersPage";
-import SinglePostPage from "./Pages/SinglePostPage";
-import SingleUserPage from "./Pages/SingleUserPage";
-import UserListPage from "./Pages/UserListPage";
+import CategoryPostsPage from "./pages/CategoryPostsPage";
+import CreatePostPage from "./pages/CreatePostPage";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ProfilePage from "./pages/ProfilePage";
+import SearchPostsPage from "./pages/SearchPostsPage";
+import SearchUsersPage from "./pages/SearchUsersPage";
+import SinglePostPage from "./pages/SinglePostPage";
+import SingleUserPage from "./pages/SingleUserPage";
+import UserListPage from "./pages/UserListPage";
 import AuthContext from "./store/auth-context";
 
 function App() {
